@@ -6,16 +6,17 @@ function RefrsHandler({ setIsAuthenticated }) {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (localStorage.getItem('token')) {
+    const token = localStorage.getItem('token');
+    
+    if (token) {
       setIsAuthenticated(true);
     }
 
     if (
-      location.pathname === '/' ||
-      location.pathname === '/login' ||
-      location.pathname === '/signup'
+      (location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup') &&
+      token
     ) {
-      navigate('/home', { replace: false });
+      navigate('/home', { replace: true }); // Use replace to prevent infinite history stack
     }
   }, [location, navigate, setIsAuthenticated]);
 
