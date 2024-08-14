@@ -1,8 +1,14 @@
- const mongoose =require('mongoose')
-mongoose.connect('mongodb://localhost:27017/auth-db')
-.then(()=>{
-    console.log("MongoDB connected");
-}).catch((err)=>{
-    console.log("MongoDB Connection Error:",err);
-})
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
+dotenv.config();  // Load environment variables from .env file
+
+const mongoUri = process.env.MONGO_DB;  // Access the MONGO_DB environment variable
+
+mongoose.connect(mongoUri)
+  .then(() => {
+    console.log("MongoDB connected successfully");
+  })
+  .catch((err) => {
+    console.error("MongoDB connection error:", err.message);
+  });
