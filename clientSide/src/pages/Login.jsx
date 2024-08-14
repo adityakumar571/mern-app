@@ -32,7 +32,7 @@ function Login() {
     }
 
     try {
-      const url = "https://mern-app-api-gamma.vercel.app/auth/login";
+      const url = "https://localhost:8080/auth/login";
       const response = await fetch(url, {
         method: "POST",
         headers: {
