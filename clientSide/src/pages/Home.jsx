@@ -24,7 +24,7 @@ function Home() {
 
   const fetchProducts = async () => {
     try {
-      const url = "http://localhost:8080/products";
+      const url = "https://mern-app-api-lac.vercel.app/products";
       const headers = {
         headers: {
           'Authorization': localStorage.getItem('token'),
@@ -45,6 +45,7 @@ function Home() {
 
   return (
     <div>
+      <h1>WelCome</h1>
       <h1>{loggedInUser}</h1>
       <button onClick={handleLogout}>Logout</button>
 
