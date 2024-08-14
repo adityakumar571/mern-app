@@ -33,7 +33,7 @@ const handleSignup = async (e) => { // Added 'async' here
   }
   
   try {
-    const url = "https://mern-app-pi-eight.vercel.app/auth/signup"; // Corrected the typo here
+    const url = "http://localhost:8080/auth/signup"; // Corrected the typo here
     const response = await fetch(url, {
       method: "POST",
       headers: {
