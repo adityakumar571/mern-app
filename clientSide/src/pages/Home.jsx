@@ -25,12 +25,16 @@ function Home() {
   const fetchProducts = async () => {
     try {
       const url = "https://mern-app-indol-ten.vercel.app/products";
-      const headers = {
+      const response = await fetch(url, {
+        method: 'GET', // specify method as GET (default is GET but good to be explicit)
         headers: {
           'Authorization': localStorage.getItem('token'),
+          'Content-Type': 'application/json', // ensure correct Content-Type if necessary
         },
-      };
-      const response = await fetch(url, headers);
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
       const result = await response.json();
       setProducts(result);
       console.log(result);
@@ -38,6 +42,7 @@ function Home() {
       handleError(err);
     }
   };
+  
 
   useEffect(() => {
     fetchProducts();
